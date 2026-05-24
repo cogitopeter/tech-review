@@ -139,33 +139,49 @@ description: "Analyze the current conversation to extract technical skills, stra
 .relation-link:hover{background:rgba(56,189,248,.1)}
 ```
 
-**代码高亮：**
+**代码高亮（纯内联无CDN）：**
 
-在 `<head>` 中引入 Prism.js（暗色主题CDN）实现代码语法高亮：
+不使用任何外部CDN（国内访问慢），改为内联CSS+轻量JS实现代码着色。
 
-```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+CSS部分（放在 `<style>` 中）：
+```css
+/* Code blocks — self-contained, no external CDN */
+pre{background:rgba(0,0,0,.35);border-radius:8px;
+  border:1px solid rgba(255,255,255,.08);margin:12px 0;padding:16px 20px;
+  overflow-x:auto;line-height:1.5}
+pre code{font-family:'Fira Code',Consolas,'Courier New',monospace;font-size:13px;
+  color:#d4d4d4;white-space:pre}
+code{font-family:'Fira Code',Consolas,'Courier New',monospace;font-size:.9em;
+  background:rgba(255,255,255,.06);padding:1px 5px;border-radius:4px}
+pre code{background:none;padding:0}
+/* Inline syntax colors */
+.hl-kw{color:#c792ea}.hl-str{color:#c3e88d}.hl-cm{color:#546e7a;font-style:italic}
+.hl-fn{color:#82aaff}.hl-num{color:#f78c6c}.hl-op{color:#89ddff}
 ```
 
 HOW部分的代码使用：
 ```html
-<pre><code class="language-javascript">
+<pre><code>
 // 关键代码片段
 var offset = 0.004;
 var angle = (2 * Math.PI * j) / g.length;
 </code></pre>
 ```
 
-自定义代码块样式覆盖Prism默认：
-```css
-pre[class*="language-"]{background:rgba(0,0,0,.3)!important;border-radius:8px;
-  border:1px solid rgba(255,255,255,.06);margin:12px 0;font-size:13px}
-code[class*="language-"]{font-family:'Fira Code',Consolas,'Courier New',monospace;font-size:13px}
+在 `</body>` 前放一段轻量内联语法着色脚本：
+```html
+<script>
+(function(){
+  document.querySelectorAll('pre code').forEach(function(el){
+    var h=el.innerHTML;
+    h=h.replace(/(#[^\n]*)/g,'<span class="hl-cm">$1</span>');
+    h=h.replace(/(&quot;[^&]*?&quot;|'[^']*?'|"[^"]*?")/g,'<span class="hl-str">$1</span>');
+    h=h.replace(/\b(var|let|const|function|return|if|else|for|while|new|this|class|import|export|from|async|await|try|catch|def|self|with|as|yield|True|False|None|mkdir|cd|git|npm|curl|pip|install|echo|sudo)\b/g,'<span class="hl-kw">$1</span>');
+    h=h.replace(/\b(\d+\.?\d*)\b/g,'<span class="hl-num">$1</span>');
+    el.innerHTML=h;
+  });
+})();
+</script>
 ```
 
 **关联知识点：**
