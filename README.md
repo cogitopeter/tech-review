@@ -8,6 +8,16 @@
 
 ## English
 
+### Why This Exists
+
+We ask AI to solve problems every day — and it delivers. But here's the thing: most of the time, we walk away with the answer and never look back at *how* AI got there. What knowledge did it draw on? What strategies did it choose? What thinking patterns made the solution work?
+
+That's a missed opportunity. Every conversation with AI is packed with skills, patterns, and decision-making approaches that you could internalize — if only someone laid them out for you.
+
+**Tech Review** does exactly that. After each conversation, it reviews everything that happened and extracts the knowledge and strategies AI applied — the ones you might not have noticed. Over time, this builds into a personal knowledge base that grows with you: you learn faster, think more clearly, and communicate with AI far more effectively.
+
+The goal isn't to replace your own thinking — it's to make sure you actually *learn* from every interaction, not just consume the output.
+
 ### What It Does
 
 After a coding or problem-solving session with Claude Code, run `/tech-review` to automatically:
@@ -68,6 +78,16 @@ MIT
 ---
 
 ## 中文说明
+
+### 设计理念
+
+我们每天都在用 AI 解决问题，而且它确实很能干。但问题是：大多数时候，我们拿到结果就走了，从来没回头看过 AI 是*怎么做到的*。它调用了什么知识？选择了什么策略？背后的思维模式是什么？
+
+这其实是一种浪费。每一次与 AI 的对话里，都藏着大量你可以内化的技能、模式和决策方法——只是没人帮你把它们摊开来看。
+
+**Tech Review** 做的就是这件事。每次对话结束后，它会回顾整个过程，把 AI 运用到的知识和策略提取出来——那些你可能根本没注意到的东西。日积月累，这些复盘会汇聚成你自己的知识体系：你学得更快、想得更清楚，也能更高效地与 AI 协作。
+
+目标不是替代你的思考，而是确保每一次与 AI 的交互，你都真正学到了东西，而不只是拿走了一个答案。
 
 ### 这是什么
 
