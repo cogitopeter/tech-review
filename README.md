@@ -18,13 +18,15 @@ After a coding or problem-solving session with Claude Code, run `/tech-review` t
 
 ### Features
 
-- 5 skill categories: Tech / Strategy / Design / Business / Thinking
+- 8 skill categories: Tech / Strategy / Design / Business / Thinking / Data / Communication / AI
 - Difficulty (1-5 stars) and importance (1-5 flames) ratings for each skill
-- Syntax-highlighted code snippets via Prism.js
+- Self-contained syntax-highlighted code snippets (no external CDN)
 - Knowledge relationship mapping between skills
 - Editable "My Notes" area on each skill card
 - Print-friendly mode with automatic light theme
+- Clickable tag cloud and skill entries — jump directly to knowledge details
 - Auto-aggregated skill index tracking your growth over time
+- **Global knowledge base** — all sessions stored in `~/mytech/` regardless of project directory, automatically initialized on first run
 
 ### Installation
 
@@ -47,12 +49,12 @@ In any Claude Code conversation, trigger the skill with:
 - `/tech-review`
 - Natural language: "tech review", "summarize skills", "learning summary"
 
-Output is saved to `mytech/` in your current working directory.
+Output is saved to `~/mytech/` (your home directory), forming a global knowledge base across all projects.
 
 ### Output Structure
 
 ```
-mytech/
+~/mytech/
   index.html                          # Master index with 3 views
   session_2025_05_20_api_design.html  # Session report
   session_2025_05_22_react_app.html   # Session report
@@ -73,10 +75,13 @@ MIT
 
 ### 核心功能
 
-- 自动识别对话中的技术技能、策略、设计模式、商业思维、思维模型
-- 生成深色主题 HTML 报告，每个知识点含难度评级、重要性评级、代码片段、关联图谱
-- 自动维护索引页面：时间线视图、技能聚合、标签云、GitHub 风格学习热力图
+- 8 大知识分类：技术 / 策略 / 设计 / 商业 / 思维 / 数据 / 沟通 / AI
+- 每个知识点含难度评级、重要性评级、代码片段、关联图谱
+- 纯内联代码高亮，无需外部 CDN（国内友好）
+- 词云标签和技能条目可点击跳转到具体知识详情
 - 可编辑的"我的笔记"区域，支持打印导出 PDF
+- **全局知识库** — 所有 session 存储在 `~/mytech/`，不限于单个项目目录，首次运行自动初始化
+- 自动维护索引页面：时间线视图、技能聚合、标签云、八维雷达图、GitHub 风格学习热力图
 
 ### 安装
 
@@ -94,4 +99,4 @@ copy SKILL.md $env:USERPROFILE\.claude\skills\tech-review\
 - 输入 `/tech-review`
 - 或自然语言：`技能复盘`、`总结技能`、`复盘一下`、`总结下学到了什么`
 
-生成的文件保存在当前工作目录的 `mytech/` 文件夹下。
+生成的文件保存在用户主目录的 `mytech/` 文件夹下（`~/mytech/`），形成跨项目的全局知识图谱。
